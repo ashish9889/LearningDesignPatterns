@@ -1,4 +1,4 @@
-package org.example.patterns.Builder;
+package org.example.patterns.builder;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,17 +19,19 @@ public class Student {
         this.setAge(builder.age);
     }
 
+    //Provides Builder object to create Student object
     public static Builder builder(){
         return new Student.Builder();
     }
     @Getter
-    static class Builder{
+    public static class Builder{
         private String name;
         private Integer rollNum;
         private String email;
         private Double psp;
         private int age;
 
+        //Builds Student object after performing validations
         public Student build(){
             if(this.age < 5){
                 throw new IllegalArgumentException("Invalid age for a student!");
